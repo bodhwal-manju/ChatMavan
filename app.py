@@ -10,7 +10,8 @@ import google.generativeai as genai
 #genai.configure(api_key=os.getenv("GOOGLE_API_KEY"))
 api_key=st.secrets['GOOGLE_API_KEY']
 ## Function to load gemini pro model and get responses
-
+if api_key:
+    genai.configure(api_key=api_key)
 model=genai.GenerativeModel("gemini-pro")
 def get_gemini_response(question):
     response= model.generate_content(question)
